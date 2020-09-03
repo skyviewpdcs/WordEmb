@@ -1,5 +1,6 @@
 from newspaper import Article
-import Utility, nltk
+import Utility
+import nltk
 from nltk.tokenize import RegexpTokenizer, word_tokenize
 from nltk.corpus import stopwords
 from collections import Counter
@@ -11,8 +12,8 @@ content = ''
 "Validating URL"
 while True:
     url = input("Please enter valid Website for analyses ")
-    if not utility.validate_web_url(url):
-        print("something wrong with the link please try another one")
+    if not Utility.validate_web_url(url):
+        print("Error presented with the link; please try another")
     else:
         break
 
@@ -23,7 +24,7 @@ try:
     article.parse()
     content = article.text
 except:
-    print("Sorry, something wrong in that link.")
+    print("Error found in link.")
     exit()
 
 # sanitizing the unwanted words
@@ -50,22 +51,22 @@ count = [x[1] for x in most_common]
 exitVal = True
 while exitVal == True:
     choice = input('''
-    Please type 1 -> Print the Most Common Words
+    Please type     1 ->   Print the Most Common Words
 
-    Please type 2 ->  Bar Chart
+    Please type     2 ->   Bar Chart for Most Common Words
 
-    Please type 3 ->  Pie Chart
+    Please type     3 ->   Pie Chart for Most Common Words
 
-    Please type 4 ->  Word2Vec Analysis from the most Common words
+    Please type     4 ->   Word2Vec Analysis from the most Common words
 
-    Please type 5 -> Word2Vec analysis for any given word
+    Please type     5 ->   Word2Vec analysis for any given word
 
-    Please type 6-> Exit    
+    Please type     6->    Exit    
 
     ''')
     if choice == "1":
         "Print the Most Common Word"
-        utility.printMaxValue(count[0], most_common)
+        Utility.printMaxValue(count[0], most_common)
     elif choice == "2":
         "Bar Chart"
         ## Bar Graph
@@ -83,20 +84,26 @@ while exitVal == True:
     elif choice == "3":
         ###PIE Chart
         fig, ax = plt.subplots()
-        ax.pie(count, labels=word, autopct=utility.make_autopct(count))
+        ax.pie(count, labels=word, autopct=Utility.make_autopct(count))
         ax.axis('equal')
         ax.set_title('Website Word count')
         plt.show()
     elif choice == "4":
-        top_value = utility.getTopValue(count[0], most_common)
-        utility.wordToVec(top_value, content)
+        try:
+            top_value = Utility.getTopValue(count[0], most_common)
+            Utility.wordToVec(top_value, content)
+        except:
+            print("Error detected")
     elif choice == "5":
-        word2Check = input("Enter the word to check word embedding similarities")
-        utility.wordToVec(word2Check, content)
+        try:
+            word2Check = input("Enter word to check word embedding similarities")
+            Utility.wordToVec(word2Check, content)
+        except:
+            print("Error found; try another word")
     elif choice == "6":
         print("Exiting......")
         exitVal = False
     else:
-        print("Not from the option please select any number from 1~5 ")
+        print("Option not valid; please select number from 1~6")
 
 
