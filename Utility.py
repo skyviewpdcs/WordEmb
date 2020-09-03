@@ -3,9 +3,7 @@ import gensim
 import nltk
 import re
 from nltk.corpus import stopwords
-
-'''Method to Validate the given website'''
-
+from gensim.models import KeyedVectors
 
 def validate_web_url(url="http://google"):
     try:
@@ -16,7 +14,7 @@ def validate_web_url(url="http://google"):
 
 
 def getTopValue(maxVal, most_common):
-    topValue=[]
+    topValue = []
     for x in most_common:
         try:
             if x[1] == maxVal:
@@ -27,7 +25,10 @@ def getTopValue(maxVal, most_common):
             print("[!] Err in getting Top words")
             exit()
 
+
 ''' Method to print the given data '''
+
+
 def printMaxValue(maxVal, most_common):
     print("~" * 25)
     print("Top Most used words in that file are ")
@@ -51,6 +52,7 @@ def make_autopct(values):
         total = sum(values)
         val = int(round(pct * total / 100.0))
         return '{v:d}'.format(p=pct, v=val)
+
     return my_autopct
 
 
@@ -65,6 +67,7 @@ def cleanText(sentence):
     # Removing Stop Words
     for i in range(len(all_words)):
         all_words[i] = [w for w in all_words[i] if w not in stopwords.words('english')]
+
     return all_words
 
 
@@ -82,4 +85,3 @@ def wordToVec(most_common, fullContent):
                          epochs=word2Vec_model.epochs)
 
     print(f"Most Common words used for {most_common} are {word2Vec_model.wv.most_similar(most_common)}")
-    #print(word2Vec_model.wv.similarity(most_common))
