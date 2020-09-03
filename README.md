@@ -16,3 +16,9 @@ pip install matplotlib
 
 import nltk
 downlad nltk.download('punkt')
+
+
+When you run the initArticle.py
+it will prompt for the Website:
+Please enter valid Website for analyses https://en.wikipedia.org/wiki/Artificial_neural_network
+
