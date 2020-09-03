@@ -1,6 +1,5 @@
 from newspaper import Article
 import Utility
-import nltk
 from nltk.tokenize import RegexpTokenizer, word_tokenize
 from nltk.corpus import stopwords
 from collections import Counter
@@ -37,8 +36,6 @@ words = tokenizer.tokenize(raw)
 stop_words = set(stopwords.words('english'))
 words = [word for word in words if word not in stop_words]
 
-print(type(words))
-print(type(content))
 # count word frequency, sort and return just 20
 counter = Counter()
 counter.update(words)
@@ -59,7 +56,7 @@ while exitVal == True:
 
     Please type     4 ->   Word2Vec Analysis from the most Common words
 
-    Please type     5 ->   Word2Vec analysis for any given word
+    Please type     5 ->   Word2Vec Analysis for any given word
 
     Please type     6->    Exit    
 
