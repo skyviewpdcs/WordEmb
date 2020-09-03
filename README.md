@@ -46,7 +46,7 @@ Please enter valid Website for analyses https://www.cnn.com/2020/08/30/politics/
       It will display a PIE chart
     if you choose option "4":
       Most Common words used for ['former'] are [('likely', 0.22271528840065002), ('final', 0.18102650344371796), ('fbi', 0.17665429413318634), ('opened', 0.17363959550857544), ('revelation', 0.16882628202438354), ('examine', 0.1487174928188324), ('took', 0.14706338942050934), ('special', 0.11645396798849106), ('robert', 0.1104341372847557), ('links', 0.10966995358467102)]     
-     if you choose option "3":
+     if you choose option "5":
       It will prompt for "Enter word to check word embedding similarities " russian
 Most Common words used for russian are [('enforcement', 0.34288784861564636), ('justice', 0.240381121635437), ('cnn', 0.19349274039268494), ('possible', 0.19332095980644226), ('president', 0.1820136159658432), ('told', 0.1752942055463791), ('privately', 0.13251204788684845), ('march', 0.12562121450901031), ('newspaper', 0.12348045408725739), ('campaign', 0.11969958245754242)]
 for any other options it will say "Option not valid; please select number from 1~6"
